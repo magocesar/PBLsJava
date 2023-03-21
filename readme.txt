@@ -1,3 +1,6 @@
+
+Grupo 12: César Willian Pacheco, Eduardo Mazzarotto Mussi, Leonardo Cavalli Maran Santos, Otávio Carneiro Nogueira, Rodrigo Münch;
+
 IMPORTANTE:
 
 Professor: Os arquivos dos PBLs estão localizados dentro da pasta "src/PBLs";
