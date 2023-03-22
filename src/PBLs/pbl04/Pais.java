@@ -1,24 +1,40 @@
 package PBLs.pbl04;
+import java.util.ArrayList;
 
 public class Pais{
     
-    private Estado estado1;
-    private Estado estado2;
+    //Cria um ArrayList com todos os estados do pais;
+    private ArrayList<Estado> listEstado = new ArrayList<Estado>();
     
-    public Pais(Estado e1, Estado e2){
-        estado1 = e1;
-        estado2 = e2;
+    //Construtor Vazio;
+    public Pais(){};
+    
+    //Soma a população de todos os estados do país;
+    public int populacao(){
+        int sum = 0;
+        for(int j = 0; j < listEstado.size(); j++){
+            sum += listEstado.get(j).populacao();
+        }
+        return sum;
     }
     
-    int populacao(){
-        return estado1.populacao() + estado2.populacao();
+    //Soma a área de todos os estados do país;
+    public double area(){
+        double sum = 0;
+        for(int j = 0; j < listEstado.size(); j++){
+            sum += listEstado.get(j).area();
+        }
+        return sum;
     }
-    
-    double area(){
-        return estado1.area() + estado2.area();
-    }
-    double densidade(){
+
+    //Soma a área de todos os estados do país;
+    public double densidade(){
         return populacao() / area(); 
+    }
+
+    //Método para adicionar estados ao país;
+    public void addEstado(Estado estado){
+        listEstado.add(estado);
     }
 
 }

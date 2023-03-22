@@ -12,8 +12,16 @@ public class IBGE {
 
         Municipio maringa = new Municipio( 600, 200);
 
-        Estado parana = new Estado(curitiba, guarapuava, londrina,
-        maringa);
+        //Instanciação Vazia;
+        Estado parana = new Estado();
+
+        parana.AddMunicipio(curitiba);
+
+        parana.AddMunicipio(guarapuava);
+
+        parana.AddMunicipio(londrina);
+
+        parana.AddMunicipio(maringa);
 
         Municipio salvador = new Municipio(3000, 400);
 
@@ -23,10 +31,23 @@ public class IBGE {
 
         Municipio itabuna = new Municipio( 320, 300);
 
-        Estado bahia = new Estado(salvador, juazeiro, ilheus,
-        itabuna);
+        //Instanciação Vazia
+        Estado bahia = new Estado();
 
-        Pais brasil = new Pais(bahia, parana);
+        bahia.AddMunicipio(salvador);
+
+        bahia.AddMunicipio(juazeiro);
+
+        bahia.AddMunicipio(ilheus);
+
+        bahia.AddMunicipio(itabuna);
+
+        //Instanciação Vazia;
+        Pais brasil = new Pais();
+
+        brasil.addEstado(parana);
+
+        brasil.addEstado(bahia);
 
         System.out.println( curitiba.densidade() ); // quadro 1
 
