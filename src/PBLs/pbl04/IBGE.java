@@ -4,6 +4,7 @@ package PBLs.pbl04;
 public class IBGE {
     public static void main(String args[]){
     
+        //Criação de Municípios;
         Municipio curitiba = new Municipio(2400, 400);
 
         Municipio guarapuava = new Municipio( 200, 100);
@@ -15,6 +16,7 @@ public class IBGE {
         //Instanciação Vazia;
         Estado parana = new Estado();
 
+        //Adicionando municípios ao estado;
         parana.AddMunicipio(curitiba);
 
         parana.AddMunicipio(guarapuava);
@@ -23,6 +25,7 @@ public class IBGE {
 
         parana.AddMunicipio(maringa);
 
+        //Criação de municípios;
         Municipio salvador = new Municipio(3000, 400);
 
         Municipio juazeiro = new Municipio( 400, 100);
@@ -45,10 +48,12 @@ public class IBGE {
         //Instanciação Vazia;
         Pais brasil = new Pais();
 
+        //Adionando estados ao país;
         brasil.addEstado(parana);
 
         brasil.addEstado(bahia);
 
+        //prints
         System.out.println( curitiba.densidade() ); // quadro 1
 
         System.out.println( parana.densidade() ); // quadro 3
