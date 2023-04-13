@@ -7,12 +7,19 @@ import java.util.Locale;
 public class game{
     public static void main(String[] args){
 
+        //Cria um Arraylist de jogadores, possibilitando adicionar jogadores de qualquer tipo (toda classe filha é uma classe mãe) e quantas vezes quiser;
         ArrayList<jogador> jogadores = new ArrayList<jogador>();
+
+        //Seta o Locale para o padrão americano, para que o Scanner não tenha problemas com o ponto e vírgula;
         Locale.setDefault(Locale.US);
+
+        //Cria um Scanner para ler os inputs do usuário;
         Scanner input = new Scanner(System.in);
         
+        //Cria uma variável booleana para controlar o loop do menu;
         boolean sair = false;
 
+        //Loop do menu;
         while(!sair){
             System.out.println("1 - Adicionar jogador");
             System.out.println("2 - Ganhar Pontos");
@@ -22,7 +29,10 @@ public class game{
 
             int opcao = input.nextInt();
 
+            //Switch para controlar as opções do menu;
             switch(opcao){
+
+                //Adicionar jogador;
                 case 1:
                     System.out.println("1 - Principiante");
                     System.out.println("2 - Profissional");
@@ -38,6 +48,7 @@ public class game{
 
                     int score = input.nextInt();
 
+                    //Adicionar Principiante;
                     if(tipo == 1){
                          
                         System.out.println("Bonus: ");
@@ -51,6 +62,7 @@ public class game{
                         break;
                     }
 
+                    //Adicionar Profissional;
                     if(tipo == 2){
                         System.out.println("Capital: ");
 
@@ -63,6 +75,7 @@ public class game{
                         break;
                     }
 
+                    //Adicionar Senior;
                     if (tipo == 3){
 
                         System.out.println("Capital: ");
@@ -80,7 +93,9 @@ public class game{
                         break;
                     }
                 
+                //Ganhar pontos;
                 case 2:
+                
                     System.out.println("Nome: ");
 
                     String nomeGanhar = input.next();
@@ -90,7 +105,8 @@ public class game{
                     int pontosGanhar = input.nextInt();
 
                     boolean findWin = false;
-
+                
+                    //Loop para encontrar o jogador e adicionar os pontos;
                     for(jogador j : jogadores){
                         if(j.getNome().equals(nomeGanhar)){
                             j.ganhar(pontosGanhar);
@@ -99,12 +115,15 @@ public class game{
                         }
                     }
 
+                    //Caso o jogador não seja encontrado, exibe uma mensagem;
                     if(!findWin){
                         System.out.println("Jogador não encontrado");
                     }
 
                     break;
 
+
+                //Perder pontos;
                 case 3: 
                     System.out.println("Nome: ");
 
@@ -116,6 +135,7 @@ public class game{
 
                     boolean findLose = false;
 
+                    //Loop para encontrar o jogador e remover os pontos;
                     for(jogador j : jogadores){
                         if(j.getNome().equals(nomePerder)){
                             j.perder(pontosPerder);
@@ -124,12 +144,14 @@ public class game{
                         }
                     }
 
+                    //Caso o jogador não seja encontrado, exibe uma mensagem;
                     if(!findLose){
                         System.out.println("Jogador não encontrado");
                     }
 
                     break;
 
+                //Imprimir jogadores;
                 case 4:
                     for(jogador j : jogadores){
                         j.Imprimir();
@@ -137,19 +159,22 @@ public class game{
 
                     break;
 
+                //Sair;
                 case 5:
+                System.out.println("Saindo...");
                     sair = true;
                     break;
             }
         }
 
+        //Fecha o Scanner;
         input.close();
 
     }
 }
 
-
-class jogador{
+//É criada uma classe abstrata chamada "Jogador", ela foi definida como abstrata pois ela não pode ser instanciada;
+abstract class jogador{
     private String nome;
     protected int score;
 
@@ -158,7 +183,7 @@ class jogador{
         this.score = score;
     }
 
-    //Nome é Privado
+    //Como o nome é privado, para as classes filhas terem acesso ao nome, é preciso declarar esse metodo na classe mãe;
     public String getNome(){
         return this.nome;
     }
@@ -168,10 +193,12 @@ class jogador{
         System.out.println("Score: " + this.score);
     }
 
-    public void ganhar(int p){}
-    public void perder(int p){}
+    //Métodos Abstratos
+    public abstract void ganhar(int p);
+    public abstract void perder(int p);
 }
 
+//Classe final pricipiante, que herda da classe jogador. Nenhuma classe filha pode ser criada a partir dessa classe;
 final class principiante extends jogador{
     private double bonus;
 
@@ -204,6 +231,7 @@ final class principiante extends jogador{
     }
 }
 
+//Classe profissional, que herda da classe jogador;
 class profissional extends jogador{
     private double capital;
 
@@ -236,6 +264,7 @@ class profissional extends jogador{
     }
 }
 
+//Classe final senior, que herda da classe profissional. Nenhuma classe filha pode ser criada a partir dessa classe;
 final class senior extends profissional{
     private double premio;
 
